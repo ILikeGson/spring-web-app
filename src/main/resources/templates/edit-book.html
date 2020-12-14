@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-size: 2em;
+            padding: 3em;
+        }
+
+        label {
+            display: inline-block;
+            width: 8em;
+        }
+
+        .row {
+            margin-top: 0.5em;
+        }
+        input {
+            width: 20em;
+            height: 2em;
+        }
+        button {
+            height: 4em;
+            width: 10em;
+            margin-top: 5em;
+            margin-left: 15em;
+        }
+
+        body {background: white;}
+        </style>
+</head>
+<body>
+<div class="form-style-2">
+    <form th:action="@{/edit/{id}(id=${book.id})}" method="POST" th:object="${book}">
+        <div class="row">
+            <label>Id:</label>
+            <input type="text" name="id" readonly="true" th:field="*{id}">
+        </div>
+
+        <div class="row">
+            <label><span>Title:</span>
+            <input type="text" name="title" th:field = "*{title}"></label>
+        </div>
+        <div class="row">
+            <label><span>Author name:</span></label>
+            <input type="text" name="first-name" th:name="first-name" th:field="*{author.firstName}">
+        </div>
+        <div class="row">
+            <label><span>Author surname:</span></label>
+            <input type="text" name="last-name" th:field="*{author.lastName}">
+        </div>
+        <div class="row">
+            <label><span>Genre:</span></label>
+            <input type="text" name="genre-name" th:field="*{genre.genreName}">
+        </div>
+        <div class="button">
+            <button type="submit">Update</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

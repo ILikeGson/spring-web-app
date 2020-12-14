@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search books</title>
+    <style>
+        * {font-family: Helvetica Neue, Arial, sans-serif; }
+
+        body { background-image: linear-gradient(#aaa 25%, #000);}
+
+        h1, table { text-align: center; }
+
+        table {border-collapse: collapse;  width: 70%; margin: 0 auto 5rem;}
+
+        th, td { padding: 1.5rem; font-size: 1.3rem; }
+
+        tr {background: hsl(50, 50%, 80%); }
+
+        tr, td { transition: .4s ease-in; }
+
+        tr:first-child {background: hsla(12, 100%, 40%, 0.5); }
+
+        tr:nth-child(even) { background: hsla(50, 50%, 80%, 0.7); }
+
+        td:empty {background: hsla(50, 25%, 60%, 0.7); }
+
+        tr:hover:not(#firstrow), tr:hover td:empty {background: tomato; pointer-events: visible;}
+        /*tr:hover:not(#firstrow) { transform: scale(1.2); font-weight: 700; box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.5);}*/
+    </style>
+</head>
+<header>
+    <div>
+        <h1>Here you can get familiarized with a full collection</h1></br>
+    </div>
+</header>
+<body>
+<h3></h3>
+<table>
+    <tr>
+        <th><h2>Id</h2></th>
+        <th><h2>Title</h2></th>
+        <th><h2>Author</h2></th>
+        <th><h2>Genre</h2></th>
+        <th><input type="hidden"></th>
+        <th><input type="hidden"></th>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}">id</td>
+        <td th:text="${book.title}">title</td>
+        <td th:text="${book.author.firstName + ' ' + book.author.lastName}">author</td>
+        <td th:text="${book.genre.genreName}">genre</td>
+        <td><a href="/edit" th:href="@{/edit(id=${book.id})}">Edit</a></td>
+        <td><a href="/delete" th:href="@{/delete(id=${book.id})}">Delete</a></td>
+    </tr>
+</table>
+<div class="row">
+
+</div>
+
+</body>
+</html>

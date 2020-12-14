@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add new book</title>
+    <style type="text/css">
+        body {
+            font-size: 2em;
+            padding: 3em;
+        }
+
+        label {
+            display: inline-block;
+            width: 7em;
+        }
+
+        .row {
+            margin-top: 0.5em;
+        }
+        input {
+            width: 20em;
+            height: 2em;
+        }
+        button {
+            height: 4em;
+            width: 10em;
+            margin-top: 5em;
+            margin-left: 15em;
+        }
+
+        body {background: cornsilk;}
+    </style>
+</head>
+<body>
+<form action="#" th:action="@{/add}" method="post" th:object="${book}">
+    <div class="row">
+        <label>Title:</label>
+        <input type="text" name="title" th:field="*{title}">
+    </div>
+    <div class="row">
+        <label>Author name:</label>
+        <input type="text" name="first-name" th:field="*{author.firstName}">
+    </div>
+    <div class="row">
+        <label>Author surname:</label>
+        <input type="text" name="last-name" th:field="*{author.lastName}">
+    </div>
+    <div class="row">
+        <label>Genre:</label>
+        <input type="text" name="genre-name" th:field="*{genre.genreName}">
+    </div>
+    <div class="button">
+        <button type="submit">Save</button>
+    </div>
+</form>
+</body>
+</html>
